@@ -1,0 +1,54 @@
+mysql> select * from salesman5;
++-------------+----------+----------+------------+
+| salesman_id | name     | city     | commission |
++-------------+----------+----------+------------+
+|           2 | Abhilash | Banglore |       1000 |
+|           4 | Adithya  | Kochi    |        750 |
+|           6 | Gaurav   | Banglore |       1200 |
+|           8 | Deeepak  | Mysore   |        800 |
+|          10 | shravan  | Banglore |        500 |
++-------------+----------+----------+------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from customer5;
++---------+-----------+----------+-------+-------------+
+| cust_id | cust_name | city     | grade | salesman_id |
++---------+-----------+----------+-------+-------------+
+|      89 | Mannu     | Banglore |   150 |          10 |
+|      95 | Priya     | Mysore   |   300 |           2 |
+|      98 | Nayana    | Banglore |   200 |          10 |
+|     111 | Pradhaan  | Banglore |   100 |           2 |
+|     126 | Rajendra  | Kochi    |   250 |           4 |
++---------+-----------+----------+-------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from order5;
++--------+---------+------------+---------+-------------+
+| ord_id | pur_amt | date       | cust_id | salesman_id |
++--------+---------+------------+---------+-------------+
+|     11 |   10000 | 2011-02-23 |     111 |           2 |
+|     14 |   12000 | 2014-08-23 |     126 |           4 |
+|     19 |    7000 | 2019-04-23 |      98 |           6 |
+|     21 |    5000 | 2021-01-23 |      89 |          10 |
+|     23 |    5000 | 2023-11-23 |      95 |           8 |
++--------+---------+------------+---------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select grade,count(distinct cust_id) from customer5 group by grade having grade> (select avg(grade) from customer5 where city='Banglore');
++-------+-------------------------+
+| grade | count(distinct cust_id) |
++-------+-------------------------+
+|   200 |                       1 |
+|   250 |                       1 |
+|   300 |                       1 |
++-------+-------------------------+
+3 rows in set (0.00 sec)
+
+mysql> select salesman_id,name from salesman5 a where 1<(select count(*) from customer5 where salesman_id=a.salesman_id);
++-------------+----------+
+| salesman_id | name     |
++-------------+----------+
+|           2 | Abhilash |
+|          10 | shravan  |
++-------------+----------+
+2 rows in set (0.00 sec)
