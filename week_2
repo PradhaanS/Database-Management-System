@@ -1,0 +1,39 @@
+mysql> use is111;
+Database changed
+mysql> select * from customer;
++------+----------+------------+------------------+----------+-----------+
+| ID   | NAME     | NUMBER     | ADDRESS          | CITY     | COUNTRY   |
++------+----------+------------+------------------+----------+-----------+
+|  111 | PRADHAAN | 9731517366 | 923, 16TH CROSS  | BANGLORE | INDIA     |
+|   98 | NAYANA   | 9687256721 | 14, 13TH CROSS   | BANGLORE | INDIA     |
+|  126 | RAJENDRA | 8923534212 | 151, 11TH CROSS  | SIRSI    | INDIA     |
+|    4 | ABHILASH | 9827171212 | 10, 10TH CROSS   | TOKYO    | JAPAN     |
+|   50 | DEEPAK   | 7896461846 | 1222, 18TH CROSS | SYDNEY   | AUSTRALIA |
+|   55 | GAURAV   | 8941765983 | 1234, 19TH CROSS | BALI     | INDONESIA |
+|   11 | ADITHYA  | 9867264122 | 21, 34TH CROSS   | CHICAGO  | USA       |
+|   89 | MANNU    | 8912673962 | 20, 22ND CROSS   | WUHAN    | CHINA     |
+|   95 | PRIYA    | 9867125683 | 6, 91ST CROSS    | LONDON   | UK        |
+|  128 | GHOST    | 9991110009 | 1, 1ST CROSS     | BANGLORE | INDIA     |
++------+----------+------------+------------------+----------+-----------+
+10 rows in set (0.00 sec)
+
+mysql> update customer set name='GOD' where ID=128;
+Query OK, 1 row affected (0.67 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from customer;
++------+----------+------------+------------------+----------+-----------+
+| ID   | NAME     | NUMBER     | ADDRESS          | CITY     | COUNTRY   |
++------+----------+------------+------------------+----------+-----------+
+|  111 | PRADHAAN | 9731517366 | 923, 16TH CROSS  | BANGLORE | INDIA     |
+|   98 | NAYANA   | 9687256721 | 14, 13TH CROSS   | BANGLORE | INDIA     |
+|  126 | RAJENDRA | 8923534212 | 151, 11TH CROSS  | SIRSI    | INDIA     |
+|    4 | ABHILASH | 9827171212 | 10, 10TH CROSS   | TOKYO    | JAPAN     |
+|   50 | DEEPAK   | 7896461846 | 1222, 18TH CROSS | SYDNEY   | AUSTRALIA |
+|   55 | GAURAV   | 8941765983 | 1234, 19TH CROSS | BALI     | INDONESIA |
+|   11 | ADITHYA  | 9867264122 | 21, 34TH CROSS   | CHICAGO  | USA       |
+|   89 | MANNU    | 8912673962 | 20, 22ND CROSS   | WUHAN    | CHINA     |
+|   95 | PRIYA    | 9867125683 | 6, 91ST CROSS    | LONDON   | UK        |
+|  128 | GOD      | 9991110009 | 1, 1ST CROSS     | BANGLORE | INDIA     |
++------+----------+------------+------------------+----------+-----------+
+10 rows in set (0.00 sec)
