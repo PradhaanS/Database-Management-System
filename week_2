@@ -1,5 +1,18 @@
+mysql> create database is111;
 mysql> use is111;
 Database changed
+mysql> create table customer(ID INTEGER, NAME VARCHAR(20), NUMBER BIGINT, ADDRESS VARCHAR(30), CITY VARCHAR(20), COUNTRY VARCHAR(20));
+mysql> INSERT INTO customer VALUES("111","PRADHAAN","9731517366","923, 16TH CROSS","BANGLORE","INDIA");
+mysql> INSERT INTO customer VALUES("098","NAYANA","9687256721","14, 13TH CROSS","BANGLORE","INDIA");
+mysql> INSERT INTO customer VALUES("126","RAJENDRA","8923534212","151, 11TH CROSS","SIRSI","INDIA");
+mysql> INSERT INTO customer VALUES("004","ABHILASH","9827171212","10, 10TH CROSS","TOKYO","JAPAN");
+mysql> INSERT INTO customer VALUES("050","DEEPAK","7896461846","1222, 18TH CROSS","SYDNEY","AUSTRALIA");
+mysql> INSERT INTO customer VALUES("055","GAURAV","8941765983","1234, 19TH CROSS","BALI","INDONESIA");
+mysql> INSERT INTO customer VALUES("011","ADITHYA","9867264122","21, 34TH CROSS","CHICAGO","USA");
+mysql> INSERT INTO customer VALUES("089","MANNU","8912673962","20, 22ND CROSS ","WUHAN","CHINA");
+mysql> INSERT INTO customer VALUES("095","PRIYA","9867125683","6, 91ST CROSS","LONDON","UK");
+mysql> INSERT INTO customer VALUES("128","GHOST","9991110009","1, 1ST CROSS","BANGLORE","INDIA");
+
 mysql> select * from customer;
 +------+----------+------------+------------------+----------+-----------+
 | ID   | NAME     | NUMBER     | ADDRESS          | CITY     | COUNTRY   |
