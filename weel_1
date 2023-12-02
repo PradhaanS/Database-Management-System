@@ -1,0 +1,21 @@
+mysql> create database is111;
+mysql> use is111;
+Database changed
+mysql> create table employee(ID integer, NAME varchar(20), AGE integer, ADDRESS varchar(20), GENDER varchar(10));
+mysql> insert into employee values("111","Pradhaan","19","Banglore","M");
+mysql> insert into employee values("98","Nayana S A","20","Banglore","F");
+mysql> insert into employee values("4","Abhilash K Raj","20","Hassan","M");
+mysql> insert into employee values("126","Rajendra","20","Sirsi","M");
+mysql> insert into employee values("55","Gaurav","21","Dubai","M");
+
+mysql> select * from employee;
++------+------------------+----------+--------------------+---------------+
+| ID   |       NAME       | AGE     | ADDRESS          | GENDER    |
++------+------------------+----------+--------------------+---------------+
+|  111 | PRADHAAN  |   19      | BANGLORE      |        M         |
+|   98  |    NAYANA    |   20       | BANGLORE     |          F         |
+|    4   |   ABHILASH   |   20       | HASSAN          |         M        |
+|  126 | RAJENDRA   |   20       | SIRSI                 |         M        |
+|   55  |   GAURAV     |   21       | DUBAI              |         M       |
++-------+-----------------+----------+--------------------+---------------+
+10 rows in set (0.00 sec)
