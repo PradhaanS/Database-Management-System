@@ -1,8 +1,10 @@
 mysql> create database order5;
 mysql> use order5;
+
 mysql> create table salesman5(salesman_id integer,name varchar(20),city varchar(20),commission integer, primary key(salesman_id));
 mysql> create table customer5(cust_id integer,cust_name varchar(20),city varchar(20),grade integer,salesman_id integer, primary key(cust_id),foreign key(salesman_id) references salesman5(salesman_id) on delete cascade);
 mysql> create table order5(ord_id integer, pur_amt integer,date date,cust_id integer,salesman_id integer, primary key(ord_id),foreign key(cust_id) references customer5(cust_id),foreign key(salesman_id) references salesman5(salesman_id) on delete cascade);
+
 mysql> insert into salesman5 values("2","Abhilash","Banglore","1000");
 mysql> insert into salesman5 values("4","Adithya","Kochi","750");
 mysql> insert into salesman5 values("6","Gaurav","Banglore","1200");
