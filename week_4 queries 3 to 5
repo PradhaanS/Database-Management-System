@@ -1,0 +1,85 @@
+mysql> select * from salesman5;
++-------------+----------+-----------+------------+
+| salesman_id | name     | city      | commission |
++-------------+----------+-----------+------------+
+|           2 | Abhilash | Banglore  |       1000 |
+|           4 | Adithya  | Kochi     |        750 |
+|           6 | Gaurav   | Banglore  |       1200 |
+|           8 | Deeepak  | Mysore    |        800 |
+|          10 | shravan  | Banglore  |        500 |
+|          12 | Karthik  | Hyderabad |       1500 |
++-------------+----------+-----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from customer5;
++-------------+-----------+----------+-------+-------------+
+| customer_id | cust_name | city     | grade | salesman_id |
++-------------+-----------+----------+-------+-------------+
+|          89 | Mannu     | Banglore |   150 |          10 |
+|          95 | Priya     | Mysore   |   300 |           2 |
+|          98 | Nayana    | Banglore |   200 |          10 |
+|         111 | Pradhaan  | Banglore |   100 |           2 |
+|         126 | Rajendra  | Kochi    |   250 |           4 |
++-------------+-----------+----------+-------+-------------+
+5 rows in set (0.00 sec)
+
+mysql>  select * from order5;
++--------+--------------+------------+-------------+-------------+
+| ord_no | purchase_amt | ord_date   | customer_id | salesman_id |
++--------+--------------+------------+-------------+-------------+
+|     11 |        10000 | 2023-02-11 |         111 |           2 |
+|     14 |        12000 | 2023-08-14 |         126 |           4 |
+|     19 |         7000 | 2023-04-19 |          98 |           6 |
+|     21 |         5000 | 2023-01-21 |          89 |          10 |
+|     23 |         5000 | 2023-11-23 |          95 |           8 |
++--------+--------------+------------+-------------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select salesman5.salesman_id,name,cust_name,commission from salesman5,customer5 where salesman5.city=customer5.city union select salesman_id,name,'NO MATCH',commission from salesman5 where not city=any(select city from customer5)order by 2 desc;
++-------------+----------+-----------+------------+
+| salesman_id | name     | cust_name | commission |
++-------------+----------+-----------+------------+
+|          10 | shravan  | Pradhaan  |        500 |
+|          10 | shravan  | Nayana    |        500 |
+|          10 | shravan  | Mannu     |        500 |
+|          12 | Karthik  | NO MATCH  |       1500 |
+|           6 | Gaurav   | Pradhaan  |       1200 |
+|           6 | Gaurav   | Nayana    |       1200 |
+|           6 | Gaurav   | Mannu     |       1200 |
+|           8 | Deeepak  | Priya     |        800 |
+|           4 | Adithya  | Rajendra  |        750 |
+|           2 | Abhilash | Pradhaan  |       1000 |
+|           2 | Abhilash | Nayana    |       1000 |
+|           2 | Abhilash | Mannu     |       1000 |
++-------------+----------+-----------+------------+
+12 rows in set (0.00 sec)
+
+mysql> create view elitsalesman10 as select b.ord_date,a.salesman_id,a.name from salesman5 a, order5 b where a.salesman_id=b.salesman_id and b.purchase_amt=(select max(purchase_amt) from order5 c where c.ord_date=b.ord_date);
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> select* from elitsalesman10;
++------------+-------------+----------+
+| ord_date   | salesman_id | name     |
++------------+-------------+----------+
+| 2023-02-11 |           2 | Abhilash |
+| 2023-08-14 |           4 | Adithya  |
+| 2023-04-19 |           6 | Gaurav   |
+| 2023-01-21 |          10 | shravan  |
+| 2023-11-23 |           8 | Deeepak  |
++------------+-------------+----------+
+5 rows in set (0.01 sec)
+
+mysql> delete from salesman5 where salesman_id=12;
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from salesman5;
++-------------+----------+----------+------------+
+| salesman_id | name     | city     | commission |
++-------------+----------+----------+------------+
+|           2 | Abhilash | Banglore |       1000 |
+|           4 | Adithya  | Kochi    |        750 |
+|           6 | Gaurav   | Banglore |       1200 |
+|           8 | Deeepak  | Mysore   |        800 |
+|          10 | shravan  | Banglore |        500 |
++-------------+----------+----------+------------+
+5 rows in set (0.00 sec)
