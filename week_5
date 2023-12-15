@@ -41,8 +41,7 @@ Query OK, 1 row affected (0.09 sec)
 mysql> insert into director values("30","SANTOSH ANANDDRAM","8972314232");
 Query OK, 1 row affected (0.72 sec)
 
-mysql> INSERT INTO movies values("1001","KGF CHAPTER-1","2018","KANNADA","10")
-;
+mysql> INSERT INTO movies values("1001","KGF CHAPTER-1","2018","KANNADA","10");
 Query OK, 1 row affected (0.08 sec)
 
 mysql> INSERT INTO movies values("1002","RANNA","2015","KANNADA","20");
@@ -51,8 +50,7 @@ Query OK, 1 row affected (0.30 sec)
 mysql> INSERT INTO movies values("1003","RAAJAKUMARA","2017","KANNADA","30");
 Query OK, 1 row affected (0.72 sec)
 
-mysql> INSERT INTO movies values("1004","KGF CHAPTER-2","2022","KANNADA","10")
-;
+mysql> INSERT INTO movies values("1004","KGF CHAPTER-2","2022","KANNADA","10");
 Query OK, 1 row affected (0.35 sec)
 
 mysql> INSERT movie_cast values("1","1001","HERO");
