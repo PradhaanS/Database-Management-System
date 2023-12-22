@@ -74,3 +74,31 @@ mysql> select * from book_authors;
 |       5 | Michael Crichton |
 +---------+------------------+
 5 rows in set (0.00 sec)
+
+mysql> insert into publisher values("G P Putnam's Sons","New York City","9084517");
+Query OK, 1 row affected (0.34 sec)
+
+mysql> insert into publisher values("Simon & Schuster","New York City","9369117");
+Query OK, 1 row affected (0.35 sec)
+
+mysql> insert into publisher values("Houghton Mifflin","Boston","9901246");
+Query OK, 1 row affected (0.95 sec)
+
+mysql> insert into publisher values("Bloomsbury","London","9356241");
+Query OK, 1 row affected (0.36 sec)
+
+mysql> insert into publisher values("Ballantine","New York City","9168182");
+Query OK, 1 row affected (1.46 sec)
+
+mysql> select * from publisher;
++-------------------+---------------+---------+
+| name              | address       | phone   |
++-------------------+---------------+---------+
+| Ballantine        | New York City | 9168182 |
+| Bloomsbury        | London        | 9356241 |
+| G P Putnam's Sons | New York City | 9084517 |
+| Houghton Mifflin  | Boston        | 9901246 |
+| Simon & Schuster  | New York City | 9369117 |
++-------------------+---------------+---------+
+5 rows in set (0.00 sec)
+
