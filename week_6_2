@@ -1,0 +1,22 @@
+mysql> create database library;
+Query OK, 1 row affected (0.15 sec)
+
+mysql> use library;
+Database changed
+mysql> create table book(book_id integer,title varchar(30),publisher_name varchar(20),pub_year integer, primary key(book_id));
+Query OK, 0 rows affected (1.20 sec)
+
+mysql> create table book_authors(book_id integer,author_name varchar(20),foreign key(book_id)references book(book_id));
+Query OK, 0 rows affected (0.50 sec)
+
+mysql> create table publisher(name varchar(20),address varchar(30),phone integer,primary key(name));
+Query OK, 0 rows affected (0.37 sec)
+
+mysql> create table library_programme(programme_id integer,program_name varchar(20),address varchar(20),primary key(programme_id));
+Query OK, 0 rows affected (0.38 sec)
+
+mysql> create table book_copies(book_id integer,programme_id integer,copies integer,foreign key(book_id)references book(book_id) on delete cascade,foreign key (programme_id)references library_programme(programme_id)on delete cascade);
+Query OK, 0 rows affected (0.62 sec)
+
+mysql> create table book_lending(book_id integer,programme_id integer,card_no integer,date_out date,due_date date,foreign key(book_id)references book(book_id) on delete cascade,foreign key (programme_id)references library_programme(programme_id)on delete cascade);
+Query OK, 0 rows affected (0.55 sec)
