@@ -1,0 +1,120 @@
+mysql> use movie;
+Database changed
+
+mysql> select * from actor;
++--------+----------+------------+
+| act_id | act_name | act_gender |
++--------+----------+------------+
+|      1 | YASH     | M          |
+|      2 | PUNEETH  | M          |
+|      3 | SUDEEP   | M          |
+|      4 | RACHITHA | F          |
+|      5 | SRINIDHI | F          |
+|      6 | PRIYA    | F          |
++--------+----------+------------+
+6 rows in set (0.39 sec)
+
+mysql> select * from director;
++--------+-------------------+------------+
+| dir_id | dir_name          | dir_ph     |
++--------+-------------------+------------+
+|     10 | PRASHANTH NEEL    | 9873457612 |
+|     20 | NANDAN KISHORE    | 9272387612 |
+|     30 | SANTOSH ANANDDRAM | 8972314232 |
++--------+-------------------+------------+
+3 rows in set (0.04 sec)
+
+mysql> select * from movies;
++--------+---------------+----------+----------+--------+
+| mov_id | mov_title     | mov_year | mov_lang | dir_id |
++--------+---------------+----------+----------+--------+
+|   1001 | KGF CHAPTER-1 |     2018 | KANNADA  |     10 |
+|   1002 | RANNA         |     2015 | KANNADA  |     20 |
+|   1003 | RAAJAKUMARA   |     2017 | KANNADA  |     30 |
+|   1004 | KGF CHAPTER-2 |     2022 | KANNADA  |     10 |
++--------+---------------+----------+----------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from movie_cast;
++--------+--------+---------+
+| act_id | mov_id | role    |
++--------+--------+---------+
+|      1 |   1001 | HERO    |
+|      1 |   1004 | HERO    |
+|      2 |   1003 | HERO    |
+|      3 |   1002 | HERO    |
+|      4 |   1002 | HEROINE |
+|      5 |   1001 | HEROINE |
+|      5 |   1004 | HEROINE |
+|      6 |   1003 | HEROINE |
++--------+--------+---------+
+8 rows in set (0.01 sec)
+
+mysql> select * from rating;
++--------+-----------+
+| mov_id | rev_stars |
++--------+-----------+
+|   1001 | 10        |
+|   1002 | 7.8       |
+|   1003 | 8.2       |
+|   1004 | 9.7       |
++--------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select mov_title from movies where dir_id in (select dir_id from director where dir_name="PRASHANTH NEEL");
++---------------+
+| mov_title     |
++---------------+
+| KGF CHAPTER-1 |
+| KGF CHAPTER-2 |
++---------------+
+2 rows in set (0.03 sec)
+
+mysql> select mov_title from movies m,movie_cast mv where m.mov_id=mv.mov_id and act_id in (select act_id from movie_cast group by act_id having count(act_id)>1)group by mov_title having count(*)>1;
++---------------+
+| mov_title     |
++---------------+
+| KGF CHAPTER-1 |
+| KGF CHAPTER-2 |
++---------------+
+2 rows in set (0.00 sec)
+
+mysql> select act_name,mov_title,mov_year from actor a join movie_cast c on a.act_id=c.act_id join movies m on c.mov_id=m.mov_id where m.mov_year not between 2000 and 2015;
++----------+---------------+----------+
+| act_name | mov_title     | mov_year |
++----------+---------------+----------+
+| YASH     | KGF CHAPTER-1 |     2018 |
+| SRINIDHI | KGF CHAPTER-1 |     2018 |
+| PUNEETH  | RAAJAKUMARA   |     2017 |
+| PRIYA    | RAAJAKUMARA   |     2017 |
+| YASH     | KGF CHAPTER-2 |     2022 |
+| SRINIDHI | KGF CHAPTER-2 |     2022 |
++----------+---------------+----------+
+6 rows in set (0.00 sec)
+
+mysql> select mov_title,max(rev_stars)from movies inner join rating using(mov_id)group by mov_title having max(rev_stars)>0 order by mov_title;
++---------------+----------------+
+| mov_title     | max(rev_stars) |
++---------------+----------------+
+| KGF CHAPTER-1 | 10             |
+| KGF CHAPTER-2 | 9.7            |
+| RAAJAKUMARA   | 8.2            |
+| RANNA         | 7.8            |
++---------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> update rating set rev_stars=10 where mov_id in(select mov_id from movies where dir_id in(select dir_id from director where dir_name="PRASHANTH NEEL"));
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 2  Changed: 1  Warnings: 0
+
+mysql> select * from rating;
++--------+-----------+
+| mov_id | rev_stars |
++--------+-----------+
+|   1001 | 10        |
+|   1002 | 7.8       |
+|   1003 | 8.2       |
+|   1004 | 10        |
++--------+-----------+
+4 rows in set (0.00 sec)
+
