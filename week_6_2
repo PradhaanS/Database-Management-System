@@ -20,3 +20,57 @@ Query OK, 0 rows affected (0.62 sec)
 
 mysql> create table book_lending(book_id integer,programme_id integer,card_no integer,date_out date,due_date date,foreign key(book_id)references book(book_id) on delete cascade,foreign key (programme_id)references library_programme(programme_id)on delete cascade);
 Query OK, 0 rows affected (0.55 sec)
+
+mysql> insert into book values("1","The Godfather","G P Putnam's Sons","1969");
+Query OK, 1 row affected (0.22 sec)
+
+mysql> insert into book values("2","IT","Simon & Schuster","1986");
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into book values("3","Lord of the Rings","Houghton Mifflin","1954");
+Query OK, 1 row affected (0.58 sec)
+
+mysql> insert into book values("4","Harry Potter","Bloomsbury","1997");
+Query OK, 1 row affected (0.21 sec)
+
+mysql> insert into book values("5","Jurrasic Park","Ballantine","1991");
+Query OK, 1 row affected (0.23 sec)
+
+mysql> select * from book;
++---------+-------------------+-------------------+----------+
+| book_id | title             | publisher_name    | pub_year |
++---------+-------------------+-------------------+----------+
+|       1 | The Godfather     | G P Putnam's Sons |     1969 |
+|       2 | IT                | Simon & Schuster  |     1986 |
+|       3 | Lord of the Rings | Houghton Mifflin  |     1954 |
+|       4 | Harry Potter      | Bloomsbury        |     1997 |
+|       5 | Jurrasic Park     | Ballantine        |     1991 |
++---------+-------------------+-------------------+----------+
+5 rows in set (0.12 sec)
+
+mysql> insert into book_authors values("1","Mario Puzo");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into book_authors values("2","Stephen King");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into book_authors values("3","J R R Tolkien");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into book_authors values("4","J K Rowling");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into book_authors values("5","Michael Crichton");
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from book_authors;
++---------+------------------+
+| book_id | author_name      |
++---------+------------------+
+|       1 | Mario Puzo       |
+|       2 | Stephen King     |
+|       3 | J R R Tolkien    |
+|       4 | J K Rowling      |
+|       5 | Michael Crichton |
++---------+------------------+
+5 rows in set (0.00 sec)
