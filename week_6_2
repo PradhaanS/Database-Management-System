@@ -201,4 +201,51 @@ mysql> select * from book_copies;
 +---------+--------------+--------+
 17 rows in set (0.00 sec)
 
+mysql> insert into book_lending values("1","1001","101","2023-12-13","2024-01-01");
+Query OK, 1 row affected (0.21 sec)
+
+mysql> insert into book_lending values("2","1001","102","2023-11-13","2024-01-13");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into book_lending values("3","1002","103","2023-11-26","2023-12-30");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into book_lending values("5","1002","104","2023-10-06","2023-11-24");
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into book_lending values("2","1003","105","2023-09-26","2023-12-05");
+Query OK, 1 row affected (0.22 sec)
+
+mysql> insert into book_lending values("4","1003","106","2023-10-15","2023-12-15");
+Query OK, 1 row affected (0.52 sec)
+
+mysql> insert into book_lending values("1","1004","107","2023-11-25","2023-12-30");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into book_lending values("2","1004","108","2023-12-05","2024-02-01");
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into book_lending values("3","1005","109","2023-10-25","2023-12-01");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into book_lending values("4","1005","110","2023-11-19","2023-12-19");
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from book_lending;
++---------+--------------+---------+------------+------------+
+| book_id | programme_id | card_no | date_out   | due_date   |
++---------+--------------+---------+------------+------------+
+|       1 |         1001 |     101 | 2023-12-13 | 2024-01-01 |
+|       2 |         1001 |     102 | 2023-11-13 | 2024-01-13 |
+|       3 |         1002 |     103 | 2023-11-26 | 2023-12-30 |
+|       5 |         1002 |     104 | 2023-10-06 | 2023-11-24 |
+|       2 |         1003 |     105 | 2023-09-26 | 2023-12-05 |
+|       4 |         1003 |     106 | 2023-10-15 | 2023-12-15 |
+|       1 |         1004 |     107 | 2023-11-25 | 2023-12-30 |
+|       2 |         1004 |     108 | 2023-12-05 | 2024-02-01 |
+|       3 |         1005 |     109 | 2023-10-25 | 2023-12-01 |
+|       4 |         1005 |     110 | 2023-11-19 | 2023-12-19 |
++---------+--------------+---------+------------+------------+
+10 rows in set (0.00 sec)
+
 
