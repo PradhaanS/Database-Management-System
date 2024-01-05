@@ -246,6 +246,30 @@ mysql> select * from book_lending;
 |       3 |         1005 |     109 | 2023-10-25 | 2023-12-01 |
 |       4 |         1005 |     110 | 2023-11-19 | 2023-12-19 |
 +---------+--------------+---------+------------+------------+
+
 10 rows in set (0.00 sec)
 
+mysql> select b.book_id, b.title, b.publisher_name, b.pub_year, ba.author_name,
+bc.programme_id, bc.copies from book b join book_authors ba on b.book_id = ba.book_id join book_copies bc on b.book_id = bc.book_id;
++---------+-------------------+-------------------+----------+------------------+--------------+--------+
+| book_id | title             | publisher_name    | pub_year | author_name      | programme_id | copies |
++---------+-------------------+-------------------+----------+------------------+--------------+--------+
+|       1 | The Godfather     | G P Putnam's Sons |     1969 | Mario Puzo       |         1002 |      2 |
+|       1 | The Godfather     | G P Putnam's Sons |     1969 | Mario Puzo       |         1003 |      3 |
+|       1 | The Godfather     | G P Putnam's Sons |     1969 | Mario Puzo       |         1004 |      2 |
+|       1 | The Godfather     | G P Putnam's Sons |     1969 | Mario Puzo       |         1005 |      2 |
+|       2 | IT                | Simon & Schuster  |     1986 | Stephen King     |         1001 |      4 |
+|       2 | IT                | Simon & Schuster  |     1986 | Stephen King     |         1003 |      2 |
+|       2 | IT                | Simon & Schuster  |     1986 | Stephen King     |         1004 |      4 |
+|       3 | Lord of the Rings | Houghton Mifflin  |     1954 | J R R Tolkien    |         1001 |      5 |
+|       3 | Lord of the Rings | Houghton Mifflin  |     1954 | J R R Tolkien    |         1002 |      5 |
+|       3 | Lord of the Rings | Houghton Mifflin  |     1954 | J R R Tolkien    |         1005 |      5 |
+|       4 | Harry Potter      | Bloomsbury        |     1997 | J K Rowling      |         1003 |      5 |
+|       4 | Harry Potter      | Bloomsbury        |     1997 | J K Rowling      |         1005 |      1 |
+|       5 | Jurrasic Park     | Ballantine        |     1991 | Michael Crichton |         1001 |      2 |
+|       5 | Jurrasic Park     | Ballantine        |     1991 | Michael Crichton |         1002 |      4 |
+|       5 | Jurrasic Park     | Ballantine        |     1991 | Michael Crichton |         1003 |      2 |
+|       5 | Jurrasic Park     | Ballantine        |     1991 | Michael Crichton |         1004 |      6 |
++---------+-------------------+-------------------+----------+------------------+--------------+--------+
+16 rows in set (0.01 sec)
 
