@@ -412,3 +412,16 @@ mysql> SELECT SS.SEM, SS.SEC, S.GENDER, COUNT(S.GENDER) AS COUNT
 
 mysql> CREATE VIEW STU_TEST1_MARKS_VIEW AS SELECT TEST1, SUBCODE FROM IAMARKS WHERE USN = "1RN13CS091";
 Query OK, 0 rows affected (0.17 sec)
+
+mysql> SELECT * FROM STU_TEST1_MARKS_VIEW;
++-------+---------+
+| TEST1 | SUBCODE |
++-------+---------+
+|    15 | 10CS81  |
+|    12 | 10CS82  |
+|    19 | 10CS83  |
+|    20 | 10CS84  |
+|    15 | 10CS85  |
++-------+---------+
+5 rows in set (0.03 sec)
+
